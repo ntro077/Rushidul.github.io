@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rushidul Amin | Marketing · Hospitality · English Instructor</title>
+    <title>Rushidul Amin | English Instructor · Hospitality · Marketing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -17,87 +17,61 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #fafaf8;
-            color: #1a1a1a;
+            background: #fefef9;
+            color: #1e2a2a;
             line-height: 1.5;
             scroll-behavior: smooth;
         }
 
-        /* Animations */
+        :root {
+            --primary: #2b5e3b;
+            --primary-light: #4a7c5c;
+            --primary-dark: #1e4628;
+            --accent: #d4a373;
+            --text-dark: #1e2a2a;
+            --text-muted: #4a5b5b;
+            --bg-card: #ffffff;
+            --border-light: #e8ede8;
+        }
+
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        .animate {
-            animation: fadeUp 0.6s ease forwards;
+        @keyframes imageReveal {
+            0% { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
-        .animate-left {
-            animation: slideInLeft 0.6s ease forwards;
-        }
+        .animate { animation: fadeUp 0.6s ease forwards; }
+        .animate-left { animation: slideInLeft 0.6s ease forwards; }
+        .animate-right { animation: slideInRight 0.6s ease forwards; }
+        .animate-scale { animation: scaleIn 0.5s ease forwards; }
 
-        .animate-right {
-            animation: slideInRight 0.6s ease forwards;
-        }
-
-        .animate-scale {
-            animation: scaleIn 0.5s ease forwards;
-        }
-
-        /* Custom cursor / gradient text */
         .gradient-text {
-            background: linear-gradient(135deg, #2c3e2f 0%, #4a6b3f 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
         section {
             padding: 5rem 0;
@@ -105,230 +79,182 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
+        section.visible { opacity: 1; transform: translateY(0); }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero */
         .hero {
             min-height: 90vh;
             display: flex;
             align-items: center;
+            gap: 4rem;
             padding: 6rem 0 4rem;
+            flex-wrap: wrap;
         }
-
-        .hero-content {
-            flex: 1;
+        .hero-content { flex: 1.5; }
+        .hero-image { flex: 1; text-align: center; }
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+            border: 4px solid white;
+            animation: imageReveal 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover { transform: scale(1.02); }
+        .img-placeholder {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e9f0e5, #d4e2cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--primary);
+            margin: 0 auto;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
+            animation: imageReveal 0.8s ease forwards;
         }
 
         .hero-badge {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #4a6b3f;
+            letter-spacing: 3px;
+            color: var(--primary);
             margin-bottom: 1rem;
-            font-weight: 500;
+            font-weight: 600;
         }
+        h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; color: var(--text-dark); }
+        .typing-wrapper { font-size: 1.4rem; font-weight: 500; color: var(--primary); margin-bottom: 1.5rem; min-height: 3rem; }
+        #typing-text { border-right: 2px solid var(--primary); padding-right: 5px; }
+        .hero-description { font-size: 1.1rem; color: var(--text-muted); max-width: 550px; margin-bottom: 2rem; }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .typing-wrapper {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #4a6b3f;
-            margin-bottom: 1.5rem;
-            min-height: 3rem;
-        }
-
-        #typing-text {
-            border-right: 2px solid #4a6b3f;
-            padding-right: 5px;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: #4a4a4a;
-            max-width: 550px;
-            margin-bottom: 2rem;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
+        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             padding: 0.8rem 1.8rem;
             border-radius: 40px;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 0.95rem;
         }
-
         .btn-primary {
-            background: #1a1a1a;
+            background: var(--primary);
             color: white;
-            border: 1px solid #1a1a1a;
+            border: 1px solid var(--primary);
         }
-
         .btn-primary:hover {
-            background: #2c3e2f;
-            border-color: #2c3e2f;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(43, 94, 59, 0.25);
         }
-
         .btn-outline {
-            border: 1px solid #d0d0d0;
-            color: #1a1a1a;
+            border: 1px solid #cbdcd0;
+            color: var(--text-dark);
             background: transparent;
         }
-
         .btn-outline:hover {
-            border-color: #4a6b3f;
-            background: #f5f5f2;
-            transform: translateY(-2px);
+            border-color: var(--primary);
+            background: #f6faf4;
+            transform: translateY(-3px);
         }
 
-        /* Section titles */
         .section-title {
             font-size: 2rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
+            color: var(--text-dark);
         }
-
         .section-title:after {
             content: '';
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 50px;
+            width: 55px;
             height: 3px;
-            background: #4a6b3f;
-            border-radius: 2px;
+            background: var(--primary);
+            border-radius: 3px;
         }
 
-        /* Cards grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.8rem;
-        }
-
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
         .card {
-            background: white;
-            border-radius: 24px;
+            background: var(--bg-card);
+            border-radius: 28px;
             padding: 1.8rem;
             transition: all 0.3s ease;
-            border: 1px solid #eaeae6;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
-
         .card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-            border-color: #d4d4cc;
+            box-shadow: 0 24px 36px -12px rgba(0,0,0,0.12);
+            border-color: #d0e0ce;
         }
+        .card-icon { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+        .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-dark); }
+        .link-card { text-decoration: none; color: inherit; display: block; }
 
-        .card-icon {
-            font-size: 2rem;
-            color: #4a6b3f;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .link-card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        /* Skills & Experience */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.7rem; }
         .skill-tag {
-            background: #f0f0ea;
+            background: #eef3ea;
             padding: 0.4rem 1rem;
             border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #2c3e2f;
-        }
-
-        .timeline-item {
-            margin-bottom: 1.8rem;
-            padding-left: 1rem;
-            border-left: 2px solid #e0e0d8;
-        }
-
-        .timeline-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .timeline-date {
             font-size: 0.8rem;
-            color: #6b6b6b;
-            margin-bottom: 0.3rem;
+            font-weight: 500;
+            color: var(--primary-dark);
         }
+        .timeline-item { margin-bottom: 1.8rem; padding-left: 1rem; border-left: 2px solid #dde9db; }
+        .timeline-title { font-weight: 700; font-size: 1.05rem; color: var(--text-dark); }
+        .timeline-date { font-size: 0.75rem; color: #6e8476; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Footer */
         footer {
-            border-top: 1px solid #eaeae6;
+            border-top: 1px solid var(--border-light);
             padding: 2rem 0;
             text-align: center;
-            color: #6b6b6b;
+            color: #7b8e82;
             font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            .hero { flex-direction: column; text-align: center; padding: 4rem 0; }
+            .hero { flex-direction: column-reverse; text-align: center; gap: 2rem; }
             .btn-group { justify-content: center; }
             .section-title:after { left: 50%; transform: translateX(-50%); width: 60px; }
             .section-title { text-align: center; display: block; }
+            .hero-description { margin-left: auto; margin-right: auto; }
+            .profile-img, .img-placeholder { width: 220px; height: 220px; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Hero Section -->
+    <!-- Hero Section with Photo -->
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-badge animate">WELCOME TO MY PORTFOLIO</div>
             <h1 class="animate">Sk Rushidul Amin<br><span class="gradient-text">Rush</span></h1>
-            <div class="typing-wrapper animate">
-                <span id="typing-text"></span>
-            </div>
-            <p class="hero-description animate">Marketing, Hospitality & English professional with a dual degree from Curtin University. Based in Brazil, helping global learners and businesses thrive.</p>
+            <div class="typing-wrapper animate"><span id="typing-text"></span></div>
+            <p class="hero-description animate">English Instructor & Teacher with a dual degree in Marketing & Hospitality from Curtin University. Based in Brazil, helping global learners and businesses thrive.</p>
             <div class="btn-group animate">
                 <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get in touch</a>
-                <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" class="btn btn-outline"><i class="fas fa-chalkboard-user"></i> Book a trial</a>
+                <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" class="btn btn-outline"><i class="fas fa-book-open"></i> Book a trial</a>
             </div>
+        </div>
+        <div class="hero-image">
+            <!-- REPLACE THIS WITH YOUR ACTUAL PHOTO -->
+            <div class="img-placeholder" id="photoPlaceholder">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <!-- TO ADD YOUR PHOTO: replace the div above with:
+            <img src="YOUR_IMAGE_URL.jpg" alt="Rushidul Amin" class="profile-img">
+            -->
         </div>
     </section>
 
@@ -338,23 +264,23 @@
         <div class="cards-grid" style="grid-template-columns: 2fr 1fr;">
             <div class="card animate-scale">
                 <i class="fas fa-user-graduate card-icon"></i>
-                <p style="margin-bottom: 1rem;">Hi, I'm Rushidul — but you can call me Rush. I'm a recent graduate from Curtin University (Tourism, Hospitality & Marketing) and currently based in Brazil. For over 4 years, I've helped students worldwide achieve fluency and confidence in English through interactive, tailored lessons. My unique blend of marketing insight, hospitality expertise, and teaching experience allows me to connect with people across cultures and industries.</p>
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Hi, I'm Rushidul — but you can call me Rush. I'm a recent graduate from Curtin University (Tourism, Hospitality & Marketing) and currently based in Brazil. For over 4 years, I've helped students worldwide achieve fluency and confidence in English through interactive, tailored lessons. My unique blend of marketing insight, hospitality expertise, and teaching experience allows me to connect with people across cultures and industries.</p>
                 <div class="skills-list">
                     <span class="skill-tag">Communications</span>
                     <span class="skill-tag">Digital Marketing</span>
-                    <span class="skill-tag">Hospitality Management</span>
-                    <span class="skill-tag">Content Development</span>
-                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Hospitality Mgmt</span>
+                    <span class="skill-tag">Content Dev</span>
+                    <span class="skill-tag">Project Mgmt</span>
                 </div>
             </div>
             <div class="card animate-scale">
                 <i class="fas fa-link card-icon"></i>
                 <h3>Quick links</h3>
-                <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem;">
-                    <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" style="text-decoration: none; color: #1a1a1a;"><i class="fab fa-prefer-p" style="color:#4a6b3f; width: 24px;"></i> Preply Profile →</a>
-                    <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" style="text-decoration: none; color: #1a1a1a;"><i class="fas fa-globe" style="color:#4a6b3f; width: 24px;"></i> Teaching Site →</a>
-                    <a href="https://youtube.com/@englishteacherrush?si=3bHzakL4pOLOu1-M" target="_blank" style="text-decoration: none; color: #1a1a1a;"><i class="fab fa-youtube" style="color:#c4302b; width: 24px;"></i> YouTube Channel →</a>
-                    <a href="#contact" style="text-decoration: none; color: #1a1a1a;"><i class="fas fa-envelope" style="color:#4a6b3f;"></i> CV / Contact</a>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                    <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" style="text-decoration: none; color: var(--text-dark);"><i class="fas fa-book-open" style="color: var(--primary); width: 28px;"></i> Preply Profile →</a>
+                    <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" style="text-decoration: none; color: var(--text-dark);"><i class="fas fa-globe" style="color: var(--primary); width: 28px;"></i> Teaching Site →</a>
+                    <a href="https://youtube.com/@englishteacherrush?si=3bHzakL4pOLOu1-M" target="_blank" style="text-decoration: none; color: var(--text-dark);"><i class="fab fa-youtube" style="color:#c4302b; width: 28px;"></i> YouTube Channel →</a>
+                    <a href="#contact" style="text-decoration: none; color: var(--text-dark);"><i class="fas fa-envelope" style="color: var(--primary);"></i> CV / Contact</a>
                 </div>
             </div>
         </div>
@@ -367,44 +293,17 @@
             <div class="card">
                 <i class="fas fa-briefcase card-icon"></i>
                 <h3>Work experience</h3>
-                <div class="timeline-item">
-                    <div class="timeline-title">English Language Instructor</div>
-                    <div class="timeline-date">2023 – Now</div>
-                    <p>Helped hundreds of students achieve fluency, exam success, and real confidence. Methodology based on interactive and personalized lesson plans.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Freelance Social Media Manager</div>
-                    <div class="timeline-date">2022 – 2023</div>
-                    <p>Social media strategy, advertising campaigns, and content creation for small businesses.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Conference Coordinator</div>
-                    <div class="timeline-date">2017 – 2019 | YMCA of The Rockies</div>
-                    <p>Managed pre-conference planning, group logistics, and post-event evaluation.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Restaurant Manager</div>
-                    <div class="timeline-date">2016 – 2017 | The Wine Trading</div>
-                    <p>Oversaw staff, premium product sales, and social media presence.</p>
-                </div>
+                <div class="timeline-item"><div class="timeline-title">English Language Instructor</div><div class="timeline-date">2023 – Now</div><p>Helped hundreds achieve fluency with personalized lesson plans, exam preparation, and conversation coaching.</p></div>
+                <div class="timeline-item"><div class="timeline-title">Freelance Social Media Manager</div><div class="timeline-date">2022 – 2023</div><p>Social media strategy, advertising campaigns, and content creation for small businesses.</p></div>
+                <div class="timeline-item"><div class="timeline-title">Conference Coordinator</div><div class="timeline-date">2017 – 2019 | YMCA of The Rockies</div><p>Pre-conference planning, group logistics, and post-event evaluation.</p></div>
+                <div class="timeline-item"><div class="timeline-title">Restaurant Manager</div><div class="timeline-date">2016 – 2017 | The Wine Trading</div><p>Staff management, premium product sales, and social media presence.</p></div>
             </div>
             <div class="card">
                 <i class="fas fa-graduation-cap card-icon"></i>
                 <h3>Education</h3>
-                <div class="timeline-item">
-                    <div class="timeline-title">Bachelor of Tourism, Hospitality & Marketing</div>
-                    <div class="timeline-date">Curtin University | 2018 – 2023</div>
-                    <p>Dual degree with focus on marketing strategies, communications, sales, and industry trends.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Business Studies</div>
-                    <div class="timeline-date">Dhaka Commerce College | 2014 – 2016</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-title">Global Volunteer</div>
-                    <div class="timeline-date">AIESEC ORG | Vietnam</div>
-                    <p>Taught English to locals and facilitated communication skills development.</p>
-                </div>
+                <div class="timeline-item"><div class="timeline-title">Bachelor of Tourism, Hospitality & Marketing</div><div class="timeline-date">Curtin University | 2018 – 2023</div><p>Dual degree with focus on marketing strategies, communications, sales, and industry trends.</p></div>
+                <div class="timeline-item"><div class="timeline-title">Business Studies</div><div class="timeline-date">Dhaka Commerce College | 2014 – 2016</div></div>
+                <div class="timeline-item"><div class="timeline-title">Global Volunteer</div><div class="timeline-date">AIESEC | Vietnam</div><p>Taught English to locals and facilitated communication skills development.</p></div>
             </div>
         </div>
     </section>
@@ -414,44 +313,44 @@
         <h2 class="section-title">My teaching world</h2>
         <div class="cards-grid">
             <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" class="card link-card">
-                <i class="fas fa-chalkboard-user card-icon"></i>
+                <i class="fas fa-book-open card-icon"></i>
                 <h3>Preply</h3>
-                <p>Book a trial lesson and start your English journey. 20-min free trial available — let's map your goals.</p>
-                <span style="color:#4a6b3f; font-weight: 500;">→ Start learning</span>
+                <p>Book a trial lesson — 20-min free session to assess your level and map your goals.</p>
+                <span style="color: var(--primary); font-weight: 500;">→ Start learning</span>
             </a>
             <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" class="card link-card">
                 <i class="fas fa-laptop-code card-icon"></i>
                 <h3>Official teaching site</h3>
-                <p>Reviews, specializations, investment details, and featured video lesson. Discover my teaching style.</p>
-                <span style="color:#4a6b3f; font-weight: 500;">→ Visit site</span>
+                <p>Reviews, specializations, investment details, and featured video lesson.</p>
+                <span style="color: var(--primary); font-weight: 500;">→ Visit site</span>
             </a>
             <a href="https://youtube.com/@englishteacherrush?si=3bHzakL4pOLOu1-M" target="_blank" class="card link-card">
                 <i class="fab fa-youtube card-icon"></i>
                 <h3>YouTube Channel</h3>
-                <p>Free English lessons, tips, and live sessions. Subscribe for weekly content to boost your fluency.</p>
-                <span style="color:#4a6b3f; font-weight: 500;">→ Watch now</span>
+                <p>Free English lessons, tips, and live sessions to boost fluency.</p>
+                <span style="color: var(--primary); font-weight: 500;">→ Watch now</span>
             </a>
         </div>
     </section>
 
     <!-- Contact & CV -->
     <section id="contact">
-        <h2 class="section-title">Let’s connect</h2>
+        <h2 class="section-title">Let's connect</h2>
         <div class="cards-grid">
             <div class="card">
                 <i class="fas fa-address-card card-icon"></i>
                 <h3>Contact info</h3>
-                <p><i class="fas fa-envelope" style="width: 24px;"></i> Ntro077@gmail.com</p>
-                <p><i class="fas fa-phone-alt"></i> +19 984270311</p>
-                <p><i class="fas fa-map-marker-alt"></i> Valinhos, SP, Brazil</p>
-                <div style="margin-top: 1rem;">
-                    <a href="#" id="downloadCV" class="btn btn-primary" style="background: #2c3e2f; padding: 0.6rem 1.2rem;"><i class="fas fa-download"></i> Download CV (PDF)</a>
+                <p><i class="fas fa-envelope" style="width: 26px; color: var(--primary);"></i> Ntro077@gmail.com</p>
+                <p><i class="fas fa-phone-alt" style="width: 26px; color: var(--primary);"></i> +19 984270311</p>
+                <p><i class="fas fa-map-marker-alt" style="width: 26px; color: var(--primary);"></i> Valinhos, SP, Brazil</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#" id="downloadCV" class="btn btn-primary" style="background: var(--primary);"><i class="fas fa-download"></i> Download CV (PDF)</a>
                 </div>
             </div>
             <div class="card">
                 <i class="fas fa-share-alt card-icon"></i>
                 <h3>Also find me</h3>
-                <p>Check my teaching site for TikTok & Instagram links, more student reviews, and free lesson samples.</p>
+                <p>Check my teaching site for TikTok & Instagram links, student reviews, and free lesson samples.</p>
                 <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" class="btn btn-outline" style="margin-top: 0.8rem;">Explore more →</a>
             </div>
         </div>
@@ -459,36 +358,24 @@
 </div>
 
 <footer>
-    <p>© 2026 Sk Rushidul Amin — Marketing · Hospitality · English Instructor</p>
+    <p>© 2026 Sk Rushidul Amin — English Instructor · Hospitality · Marketing</p>
 </footer>
 
 <script>
-    // Typing animation
-    const roles = ["Marketing Specialist", "Hospitality Professional", "English Instructor", "Global Educator"];
-    let idx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
+    // Typing animation - now starts with English Instructor & Teacher
+    const roles = ["English Language Instructor & Teacher", "Hospitality Professional", "Marketing Specialist", "Global Educator"];
+    let idx = 0, charIdx = 0, isDeleting = false;
     const typingEl = document.getElementById("typing-text");
-
     function typeEffect() {
         const current = roles[idx];
         if (isDeleting) {
             typingEl.textContent = current.substring(0, charIdx - 1);
             charIdx--;
-            if (charIdx === 0) {
-                isDeleting = false;
-                idx = (idx + 1) % roles.length;
-                setTimeout(typeEffect, 300);
-                return;
-            }
+            if (charIdx === 0) { isDeleting = false; idx = (idx + 1) % roles.length; setTimeout(typeEffect, 300); return; }
         } else {
             typingEl.textContent = current.substring(0, charIdx + 1);
             charIdx++;
-            if (charIdx === current.length) {
-                isDeleting = true;
-                setTimeout(typeEffect, 1800);
-                return;
-            }
+            if (charIdx === current.length) { isDeleting = true; setTimeout(typeEffect, 1800); return; }
         }
         setTimeout(typeEffect, isDeleting ? 50 : 100);
     }
@@ -497,48 +384,14 @@
     // Scroll reveal
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
-    // Manual trigger for initial animation classes (CSS already handles, but ensure visible)
-    document.querySelectorAll('.animate, .animate-left, .animate-right, .animate-scale').forEach(el => {
-        el.style.opacity = '1';
-    });
-
-    // CV download using embedded PDF data (the file you provided)
+    // CV download
     document.getElementById('downloadCV').addEventListener('click', function(e) {
         e.preventDefault();
-        // Since we cannot upload original file, we generate a downloadable doc with the same content
-        const cvContent = `Sk Rushidul Amin
-Marketing · Hospitality · English Instructor
-
-EDUCATION
-Bachelor of Tourism, Hospitality & Marketing - Curtin University (2018-2023)
-Business Studies - Dhaka Commerce College (2014-2016)
-
-ABOUT
-Hi, I'm Rushidul (Rush). Curtin graduate specialized in Tourism, Hospitality, and Marketing. Currently based in Brazil, working as an online English teacher for 4+ years, helping students worldwide achieve language goals.
-
-SKILLS
-Communications | Interview preparations | Digital Marketing | Content Development | Microsoft 360 | Project Management | Hospitality Management | Restaurant Management
-
-EXPERIENCE
-English Language Instructor (2023–Now)
-Freelance Social Media Manager (2022–2023)
-Conference Coordinator - YMCA of The Rockies (2017–2019)
-Restaurant Manager - The Wine Trading (2016–2017)
-
-CONTACT
-Email: Ntro077@gmail.com | Phone: +19 984270311
-Valinhos, SP, Brazil
-
-Full CV available upon request with detailed achievements.`;
+        const cvContent = `Sk Rushidul Amin - CV\n\nEDUCATION\nBachelor of Tourism, Hospitality & Marketing - Curtin University (2018-2023)\nBusiness Studies - Dhaka Commerce College (2014-2016)\n\nABOUT\nRushidul (Rush), Curtin graduate specialized in Tourism, Hospitality, and Marketing. Based in Brazil, online English teacher for 4+ years.\n\nSKILLS\nCommunications | Digital Marketing | Hospitality Management | Content Development | Project Management\n\nEXPERIENCE\nEnglish Language Instructor (2023–Now)\nFreelance Social Media Manager (2022–2023)\nConference Coordinator - YMCA (2017–2019)\nRestaurant Manager (2016–2017)\n\nCONTACT\nEmail: Ntro077@gmail.com | Phone: +19 984270311\nValinhos, SP, Brazil`;
         const blob = new Blob([cvContent], { type: 'application/pdf' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
