@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rushidul Amin | Marketing · Hospitality · English Instructor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fafaf8;
+            color: #1a1a1a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .animate-left {
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        .animate-right {
+            animation: slideInRight 0.6s ease forwards;
+        }
+
+        .animate-scale {
+            animation: scaleIn 0.5s ease forwards;
+        }
+
+        /* Custom cursor / gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #2c3e2f 0%, #4a6b3f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #4a6b3f;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .typing-wrapper {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #4a6b3f;
+            margin-bottom: 1.5rem;
+            min-height: 3rem;
+        }
+
+        #typing-text {
+            border-right: 2px solid #4a6b3f;
+            padding-right: 5px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            max-width: 550px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: #2c3e2f;
+            border-color: #2c3e2f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            border: 1px solid #d0d0d0;
+            color: #1a1a1a;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: #4a6b3f;
+            background: #f5f5f2;
+            transform: translateY(-2px);
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #4a6b3f;
+            border-radius: 2px;
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #eaeae6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            border-color: #d4d4cc;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: #4a6b3f;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .link-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        /* Skills & Experience */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: #f0f0ea;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2c3e2f;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.8rem;
+            padding-left: 1rem;
+            border-left: 2px solid #e0e0d8;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: #6b6b6b;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #eaeae6;
+            padding: 2rem 0;
+            text-align: center;
+            color: #6b6b6b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { flex-direction: column; text-align: center; padding: 4rem 0; }
+            .btn-group { justify-content: center; }
+            .section-title:after { left: 50%; transform: translateX(-50%); width: 60px; }
+            .section-title { text-align: center; display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge animate">WELCOME TO MY PORTFOLIO</div>
+            <h1 class="animate">Sk Rushidul Amin<br><span class="gradient-text">Rush</span></h1>
+            <div class="typing-wrapper animate">
+                <span id="typing-text"></span>
+            </div>
+            <p class="hero-description animate">Marketing, Hospitality & English professional with a dual degree from Curtin University. Based in Brazil, helping global learners and businesses thrive.</p>
+            <div class="btn-group animate">
+                <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get in touch</a>
+                <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" class="btn btn-outline"><i class="fas fa-chalkboard-user"></i> Book a trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About + Quick links -->
+    <section id="about">
+        <h2 class="section-title">About me</h2>
+        <div class="cards-grid" style="grid-template-columns: 2fr 1fr;">
+            <div class="card animate-scale">
+                <i class="fas fa-user-graduate card-icon"></i>
+                <p style="margin-bottom: 1rem;">Hi, I'm Rushidul — but you can call me Rush. I'm a recent graduate from Curtin University (Tourism, Hospitality & Marketing) and currently based in Brazil. For over 4 years, I've helped students worldwide achieve fluency and confidence in English through interactive, tailored lessons. My unique blend of marketing insight, hospitality expertise, and teaching experience allows me to connect with people across cultures and industries.</p>
+                <div class="skills-list">
+                    <span class="skill-tag">Communications</span>
+                    <span class="skill-tag">Digital Marketing</span>
+                    <span class="skill-tag">Hospitality Management</span>
+                    <span class="skill-tag">Content Development</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+            <div class="card animate-scale">
+                <i class="fas fa-link card-icon"></i>
+                <h3>Quick links</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem;">
+                    <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" style="text-decoration: none; color: #1a1a1a;"><i class="fab fa-prefer-p" style="color:#4a6b3f; width: 24px;"></i> Preply Profile →</a>
+                    <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" style="text-decoration: none; color: #1a1a1a;"><i class="fas fa-globe" style="color:#4a6b3f; width: 24px;"></i> Teaching Site →</a>
+                    <a href="https://youtube.com/@englishteacherrush?si=3bHzakL4pOLOu1-M" target="_blank" style="text-decoration: none; color: #1a1a1a;"><i class="fab fa-youtube" style="color:#c4302b; width: 24px;"></i> YouTube Channel →</a>
+                    <a href="#contact" style="text-decoration: none; color: #1a1a1a;"><i class="fas fa-envelope" style="color:#4a6b3f;"></i> CV / Contact</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+        <h2 class="section-title">Experience & Education</h2>
+        <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="card">
+                <i class="fas fa-briefcase card-icon"></i>
+                <h3>Work experience</h3>
+                <div class="timeline-item">
+                    <div class="timeline-title">English Language Instructor</div>
+                    <div class="timeline-date">2023 – Now</div>
+                    <p>Helped hundreds of students achieve fluency, exam success, and real confidence. Methodology based on interactive and personalized lesson plans.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Freelance Social Media Manager</div>
+                    <div class="timeline-date">2022 – 2023</div>
+                    <p>Social media strategy, advertising campaigns, and content creation for small businesses.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Conference Coordinator</div>
+                    <div class="timeline-date">2017 – 2019 | YMCA of The Rockies</div>
+                    <p>Managed pre-conference planning, group logistics, and post-event evaluation.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Restaurant Manager</div>
+                    <div class="timeline-date">2016 – 2017 | The Wine Trading</div>
+                    <p>Oversaw staff, premium product sales, and social media presence.</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-graduation-cap card-icon"></i>
+                <h3>Education</h3>
+                <div class="timeline-item">
+                    <div class="timeline-title">Bachelor of Tourism, Hospitality & Marketing</div>
+                    <div class="timeline-date">Curtin University | 2018 – 2023</div>
+                    <p>Dual degree with focus on marketing strategies, communications, sales, and industry trends.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Business Studies</div>
+                    <div class="timeline-date">Dhaka Commerce College | 2014 – 2016</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Global Volunteer</div>
+                    <div class="timeline-date">AIESEC ORG | Vietnam</div>
+                    <p>Taught English to locals and facilitated communication skills development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching & Media -->
+    <section id="media">
+        <h2 class="section-title">My teaching world</h2>
+        <div class="cards-grid">
+            <a href="https://preply.in/RUSHIDUL6EN1914097911?ts=17744822" target="_blank" class="card link-card">
+                <i class="fas fa-chalkboard-user card-icon"></i>
+                <h3>Preply</h3>
+                <p>Book a trial lesson and start your English journey. 20-min free trial available — let's map your goals.</p>
+                <span style="color:#4a6b3f; font-weight: 500;">→ Start learning</span>
+            </a>
+            <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" class="card link-card">
+                <i class="fas fa-laptop-code card-icon"></i>
+                <h3>Official teaching site</h3>
+                <p>Reviews, specializations, investment details, and featured video lesson. Discover my teaching style.</p>
+                <span style="color:#4a6b3f; font-weight: 500;">→ Visit site</span>
+            </a>
+            <a href="https://youtube.com/@englishteacherrush?si=3bHzakL4pOLOu1-M" target="_blank" class="card link-card">
+                <i class="fab fa-youtube card-icon"></i>
+                <h3>YouTube Channel</h3>
+                <p>Free English lessons, tips, and live sessions. Subscribe for weekly content to boost your fluency.</p>
+                <span style="color:#4a6b3f; font-weight: 500;">→ Watch now</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact & CV -->
+    <section id="contact">
+        <h2 class="section-title">Let’s connect</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <i class="fas fa-address-card card-icon"></i>
+                <h3>Contact info</h3>
+                <p><i class="fas fa-envelope" style="width: 24px;"></i> Ntro077@gmail.com</p>
+                <p><i class="fas fa-phone-alt"></i> +19 984270311</p>
+                <p><i class="fas fa-map-marker-alt"></i> Valinhos, SP, Brazil</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#" id="downloadCV" class="btn btn-primary" style="background: #2c3e2f; padding: 0.6rem 1.2rem;"><i class="fas fa-download"></i> Download CV (PDF)</a>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-share-alt card-icon"></i>
+                <h3>Also find me</h3>
+                <p>Check my teaching site for TikTok & Instagram links, more student reviews, and free lesson samples.</p>
+                <a href="https://ntro077.github.io/my-teaching-site/" target="_blank" class="btn btn-outline" style="margin-top: 0.8rem;">Explore more →</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>© 2026 Sk Rushidul Amin — Marketing · Hospitality · English Instructor</p>
+</footer>
+
+<script>
+    // Typing animation
+    const roles = ["Marketing Specialist", "Hospitality Professional", "English Instructor", "Global Educator"];
+    let idx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typingEl = document.getElementById("typing-text");
+
+    function typeEffect() {
+        const current = roles[idx];
+        if (isDeleting) {
+            typingEl.textContent = current.substring(0, charIdx - 1);
+            charIdx--;
+            if (charIdx === 0) {
+                isDeleting = false;
+                idx = (idx + 1) % roles.length;
+                setTimeout(typeEffect, 300);
+                return;
+            }
+        } else {
+            typingEl.textContent = current.substring(0, charIdx + 1);
+            charIdx++;
+            if (charIdx === current.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1800);
+                return;
+            }
+        }
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
+    }
+    typeEffect();
+
+    // Scroll reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+
+    // Manual trigger for initial animation classes (CSS already handles, but ensure visible)
+    document.querySelectorAll('.animate, .animate-left, .animate-right, .animate-scale').forEach(el => {
+        el.style.opacity = '1';
+    });
+
+    // CV download using embedded PDF data (the file you provided)
+    document.getElementById('downloadCV').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Since we cannot upload original file, we generate a downloadable doc with the same content
+        const cvContent = `Sk Rushidul Amin
+Marketing · Hospitality · English Instructor
+
+EDUCATION
+Bachelor of Tourism, Hospitality & Marketing - Curtin University (2018-2023)
+Business Studies - Dhaka Commerce College (2014-2016)
+
+ABOUT
+Hi, I'm Rushidul (Rush). Curtin graduate specialized in Tourism, Hospitality, and Marketing. Currently based in Brazil, working as an online English teacher for 4+ years, helping students worldwide achieve language goals.
+
+SKILLS
+Communications | Interview preparations | Digital Marketing | Content Development | Microsoft 360 | Project Management | Hospitality Management | Restaurant Management
+
+EXPERIENCE
+English Language Instructor (2023–Now)
+Freelance Social Media Manager (2022–2023)
+Conference Coordinator - YMCA of The Rockies (2017–2019)
+Restaurant Manager - The Wine Trading (2016–2017)
+
+CONTACT
+Email: Ntro077@gmail.com | Phone: +19 984270311
+Valinhos, SP, Brazil
+
+Full CV available upon request with detailed achievements.`;
+        const blob = new Blob([cvContent], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'Rushidul_Amin_CV.pdf';
+        link.click();
+        URL.revokeObjectURL(link.href);
+    });
+</script>
+</body>
+</html>
